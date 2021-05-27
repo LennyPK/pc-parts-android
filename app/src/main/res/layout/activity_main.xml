@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,92 +18,66 @@
             android:layout_height="wrap_content"
             android:text="Search all..."
             android:gravity="center"
-            android:textColor="#555555"/>
+            android:textColor="#FFFFFF"/>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/darker_gray"
-            android:layout_marginTop="8dp"
-            android:elevation="40dp"
-            app:cardCornerRadius="4dp">
+            style="@style/CategoryCard"
+
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:padding="16dp">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/motherboard" />
+                    style="@style/CategoryImage"
+                    android:src="@drawable/motherboard"
+                    />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
+                    style="@style/CategoryText"
                     android:text="Motherboard"
-                    android:textSize="36dp" />
+                    />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@android:color/darker_gray"
-            android:elevation="40dp"
-            app:cardCornerRadius="4dp">
+            style="@style/CategoryCard">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:padding="16dp">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:scaleType="centerCrop"
+                    style="@style/CategoryImage"
                     android:src="@drawable/gpu" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:text="GPU"
-                    android:textSize="36dp" />
+                    style="@style/CategoryText"
+                    android:text="GPU" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@android:color/darker_gray"
-            android:elevation="40dp"
-            app:cardCornerRadius="4dp">
+            style="@style/CategoryCard">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:padding="16dp">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:scaleType="centerCrop"
+                    style="@style/CategoryImage"
                     android:src="@drawable/ram" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:text="RAM"
-                    android:textSize="36dp" />
+                    style="@style/CategoryText"
+                    android:text="RAM"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
