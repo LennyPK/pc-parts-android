@@ -21,6 +21,7 @@
             android:textColor="#FFFFFF"/>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/motherboard"
             style="@style/CategoryCard"
 
             >
