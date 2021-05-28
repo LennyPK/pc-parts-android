@@ -9,8 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
     <SearchView
         android:layout_width="match_parent"
@@ -34,13 +33,12 @@
         </androidx.cardview.widget.CardView>
 
         <ListView
-            android:id="@+id/list_view"
+            android:id="@+id/category_list_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@android:color/transparent"
             android:dividerHeight="8dp"
             android:scrollbars="none"
-
             />
     </LinearLayout>
 </ScrollView>

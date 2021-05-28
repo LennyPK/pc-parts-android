@@ -40,6 +40,15 @@
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:layout_gravity">center</item>
     </style>
+    <style name="ItemTitleText">
+        <item name="android:textSize">16dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+    </style>
 
     <style name="CategoryImageCard" parent="CardView">
         <item name="android:layout_width">130dp</item>
@@ -48,7 +57,7 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
-    <style name="CategoryIamge">
+    <style name="CategoryImage">
         <item name="android:layout_width">130dp</item>
         <item name="android:layout_height">130dp</item>
         <item name="android:scaleType">centerCrop</item>

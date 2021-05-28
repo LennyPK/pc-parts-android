@@ -18,7 +18,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends ListActivity {
+public class MainActivity extends ListActivity{
 
     String[] names = {
             "Motherboard", "RAM", "GPU", "Poop"
@@ -29,13 +29,12 @@ public class MainActivity extends ListActivity {
     };
 
     class ViewHolder {
-        CardView motherboard_card;
         ListView category_listview;
 
         CategoryList category_list;
 
         public ViewHolder() {
-            category_listview = findViewById(R.id.list_view);
+            category_listview = findViewById(R.id.category_list_view);
         }
     }
 
@@ -62,6 +61,8 @@ public class MainActivity extends ListActivity {
         });
     }
 
+    //this function is for resizing the listview so that it doesn't do weird scroll thing
+    //taken from: https://stackoverflow.com/a/30497694
     public static void setListViewHeightBasedOnChildren(ListView listView) {
         ListAdapter listAdapter = listView.getAdapter();
         if (listAdapter == null) {
