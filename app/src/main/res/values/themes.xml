@@ -19,8 +19,17 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:backgroundTint">#323232</item>
         <item name="android:elevation">40dp</item>
-        <item name="android:layout_marginTop">8dp</item>
         <item name="cardCornerRadius">15dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="MainActivityHeader">
+        <item name="android:textSize">24dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:layout_gravity">center</item>
     </style>
 
     <style name="CategoryText">
@@ -32,10 +41,16 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
-    <style name="CategoryImage">
-        <item name="android:layout_width">100dp</item>
-        <item name="android:layout_height">100dp</item>
-        <item name="android:scaleType">centerCrop</item>
+    <style name="CategoryImageCard" parent="CardView">
+        <item name="android:layout_width">130dp</item>
+        <item name="android:layout_height">130dp</item>
+        <item name="cardCornerRadius">15dp</item>
         <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="CategoryIamge">
+        <item name="android:layout_width">130dp</item>
+        <item name="android:layout_height">130dp</item>
+        <item name="android:scaleType">centerCrop</item>
     </style>
 </resources>
