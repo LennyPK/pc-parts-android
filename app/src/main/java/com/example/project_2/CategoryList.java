@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
-public class CategoryList extends ArrayAdapter {
+public class CategoryList extends ArrayAdapter{
     private int[] imageIDs;
     private String[] names;
     private Activity context;
