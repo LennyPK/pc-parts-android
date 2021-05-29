@@ -57,6 +57,11 @@
         <item name="android:layout_gravity">center</item>
     </style>
 
+    <style name="ItemImageCard" parent="CardView">
+        <item name="cardCornerRadius">15dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
     <style name="CategoryImage">
         <item name="android:layout_width">130dp</item>
         <item name="android:layout_height">130dp</item>

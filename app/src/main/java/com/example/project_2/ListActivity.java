@@ -53,7 +53,8 @@ public class ListActivity extends AppCompatActivity {
         vh.item_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent ListActivity = new Intent(getBaseContext(), ViewItemActivity.class);
+                startActivity(ListActivity);
             }
         });
     }
