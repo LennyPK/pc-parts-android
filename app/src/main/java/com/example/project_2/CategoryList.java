@@ -8,20 +8,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.project_2.model.Category;
 
 public class CategoryList extends ArrayAdapter{
-    private int[] imageIDs;
-    private String[] names;
     private Activity context;
 
-    public CategoryList(Activity context, String[] names, int[] imageIDs) {
-        super(context, R.layout.category_card, names);
-        this.names=names;
-        this.imageIDs = imageIDs;
+    public CategoryList(Activity context) {
+        super(context, R.layout.category_card, Category.getNamesList());
         this.context=context;
     }
 
+    //populates each category card gui with data.
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View category =convertView;
@@ -31,8 +28,8 @@ public class CategoryList extends ArrayAdapter{
         TextView textViewName = (TextView) category.findViewById(R.id.category_textview);
         ImageView imageView = (ImageView) category.findViewById(R.id.category_imageview);
 
-        textViewName.setText(names[position]);
-        imageView.setImageResource(imageIDs[position]);
+        textViewName.setText(Category.categories.get(position).getName());
+        imageView.setImageResource(Category.categories.get(position).getImageID());
         return category;
     }
 }

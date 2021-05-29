@@ -21,9 +21,15 @@
 
         <androidx.cardview.widget.CardView
             style="@style/CategoryCard">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="4dp">
             <TextView
-                style="@style/MainActivityHeader"
-                android:text="XXXXX"/>
+                style="@style/ItemTitleText"
+                android:text="Showing [Category] results for 'Search Term blah basdasd':"/>
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <ListView

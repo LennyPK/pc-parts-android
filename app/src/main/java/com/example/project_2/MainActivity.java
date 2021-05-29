@@ -1,32 +1,19 @@
 package com.example.project_2;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.project_2.model.Category;
+import com.example.project_2.model.Item;
 
 public class MainActivity extends ListActivity{
-
-    String[] names = {
-            "Motherboard", "RAM", "GPU", "Poop"
-    };
-
-    int[] imageIDs = {
-            R.drawable.motherboard, R.drawable.ram, R.drawable.gpu, R.drawable.ram
-    };
 
     class ViewHolder {
         ListView category_listview;
@@ -46,9 +33,19 @@ public class MainActivity extends ListActivity{
         setContentView(R.layout.activity_main);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
+        //This will be done in the DataLoader code later
+        Category.addCategory("Motherboard", R.drawable.motherboard);
+        Category.addCategory("RAM", R.drawable.ram);
+        Category.addCategory("GPU", R.drawable.gpu);
+
+        //don't know how else to do this, there's probably a better way
+        //if this is not run for both MainActivity and ListActivity, errors happen
+        Item.INITIALIZE_ITEMS();
+
         vh = new ViewHolder();
 
-        vh.category_list = new CategoryList(this,names,imageIDs);
+        //This stuff should be inside ViewHolder but it causes problems if it is atm, will fix later
+        vh.category_list = new CategoryList(this);
         vh.category_listview.setAdapter(vh.category_list);
         setListViewHeightBasedOnChildren(vh.category_listview);
 
