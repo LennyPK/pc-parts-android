@@ -15,6 +15,9 @@ public class Category {
         this.name=name;
         this.imageID=imageID;
         this.id = currentID++;
+        if (getCategory(name)==null){
+            categories.add(this);
+        }
     }
 
     public String getName(){
@@ -44,16 +47,5 @@ public class Category {
             list[i] = categories.get(i).getName();
         }
         return list;
-    }
-
-    public static void addCategory(Category c){
-        if (getCategory(c.getName())==null){
-            categories.add(c);
-        }
-    }
-    public static void addCategory(String name, int imageID){
-        if (getCategory(name)==null){
-            categories.add(new Category(name, imageID));
-        }
     }
 }

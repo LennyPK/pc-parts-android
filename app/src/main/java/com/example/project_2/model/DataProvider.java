@@ -3,18 +3,32 @@ package com.example.project_2.model;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.project_2.R;
 import com.example.project_2.model.Item;
 import com.example.project_2.model.Category;
 
 import java.util.*;
 
 public class DataProvider {
-    private static Category motherboard = new Category("Motherboard", 1);
-    private static Category ram = new Category("RAM", 2);
-    private static Category gpu = new Category("GPU", 3);
+    //Any categories created here will show up in the main screen
+    public static Category CATEGORY_MOTHERBOARD = new Category("Motherboard", R.drawable.motherboard);
+    public static Category CATEGORY_RAM = new Category("RAM", R.drawable.ram);
+    public static Category CATEGORY_GPU = new Category("GPU", R.drawable.gpu);
 
-    static Item[] allItems = {new Item(motherboard, "ASUS TUF Gaming X570-PLUS (WI-FI) ATX", 3, "it works", 999.99),
-                              new Item(motherboard, "ASUS ROG STRIX X570-E Gaming ATX", 1, "this also works", 111.99)};
+    static Item[] allItems;
+
+    public DataProvider(){
+        Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS TUF Gaming X570-PLUS (WI-FI) ATX", R.drawable.motherboard, "it works", 999.99));
+        Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX", R.drawable.motherboard, "this also works", 111.99));
+        Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX", R.drawable.motherboard, "this also works", 111.99));
+        Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX", R.drawable.motherboard, "this also works", 111.99));
+        Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX", R.drawable.motherboard, "this also works", 111.99));
+        System.out.println(Item.items.size());
+        for(int i = 0; i < Item.items.size();i++){
+            System.out.println(Item.getItem(i).getTitle());
+        }
+        System.out.println("HELLO!!");
+    }
 
     public static ArrayList<Item> getProducts() {
         ArrayList<Item> products = new ArrayList<Item>();

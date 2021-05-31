@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -11,6 +12,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.example.project_2.model.Category;
+import com.example.project_2.model.DataProvider;
 import com.example.project_2.model.Item;
 
 public class MainActivity extends ListActivity{
@@ -26,21 +28,13 @@ public class MainActivity extends ListActivity{
     }
 
     ViewHolder vh;
+    DataProvider dp = new DataProvider();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-
-        //This will be done in the DataLoader code later
-        Category.addCategory("Motherboard", R.drawable.motherboard);
-        Category.addCategory("RAM", R.drawable.ram);
-        Category.addCategory("GPU", R.drawable.gpu);
-
-        //don't know how else to do this, there's probably a better way
-        //if this is not run for both MainActivity and ListActivity, errors happen
-        Item.INITIALIZE_ITEMS();
 
         vh = new ViewHolder();
 
@@ -53,6 +47,7 @@ public class MainActivity extends ListActivity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent ListActivity = new Intent(getBaseContext(), ListActivity.class);
+                ListActivity.putExtra("CATEGORY", Integer.toString(position));
                 startActivity(ListActivity);
             }
         });
