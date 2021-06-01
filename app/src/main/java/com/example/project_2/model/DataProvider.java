@@ -11,9 +11,9 @@ import java.util.*;
 
 public class DataProvider {
 
-    static String[] category = {"motherboard", "motherboard", "motherboard",
-                                "ram", "ram","ram",
-                                "gpu", "gpu","gpu"};
+    static String[] category = {"Motherboard", "Motherboard", "Motherboard",
+                                "RAM", "RAM","RAM",
+                                "GPU", "GPU","GPU"};
 
     //Any categories created here will show up in the main screen
     public static Category CATEGORY_MOTHERBOARD = new Category("Motherboard", R.drawable.motherboard);
@@ -55,26 +55,17 @@ public class DataProvider {
     };
 
     static String[] description = {
-            "MB Socket\t\tAMD AM4\n" + "Wi-Fi\t\t\tYes\n" + "Chipset\t\t\tX570\n" +
-                    "Form Factor\t\tATX\n" + "Memory Type\t\tDDR4\n",
-            "MB Socket\t\tAMD AM4\n" + "Wi-Fi\t\t\tYes\n" + "Chipset\t\t\tX570\n" +
-                    "Form Factor\t\tATX\n" + "Memory Type\t\tDDR4\n",
-            "MB Socket\t\tAMD AM4\n" + "Wi-Fi\t\t\tNo\n" + "Chipset\t\t\tX570\n" +
-                    "Form Factor\t\tATX\n" + "Memory Type\t\tDDR4\n",
+            "AMD AM4\n" + "Yes\n" + "X570\n" + "ATX\n" + "DDR4\n",
+            "AMD AM4\n" + "Yes\n" + "X570\n" + "ATX\n" + "DDR4\n",
+            "AMD AM4\n" + "No\n" + "X570\n" + "ATX\n" + "DDR4\n",
 
-            "Form Factor\t\tDIMM\n" + "Memory Type\t\tDDR4\n" + "Memory Capacity\t32GB (2 x 16GB)\n" +
-                    "Memory Speed\t\t3200Mhz\n" + "CAS Latency\t\tCL16\n" + "Voltage\t\t\t1.35 Volts\n",
-            "Form Factor\t\tDDR4\n" + "Memory Type\t\tDIMM\n" + "Memory Capacity\t16GB (2 x 8GB)\n" +
-                    "Memory Speed\t\t3200Mhz\n" + "CAS Latency\t\tCL16\n" + "Voltage\t\t\t1.35 Volts\n",
-            "Form Factor\t\tDDR4\n" + "Memory Type\t\tDIMM\n" + "Memory Capacity\t16GB (2 x 8GB)\n" +
-                    "Memory Speed\t\t3600Mhz\n" + "CAS Latency\t\tCL18\n" + "Voltage\t\t\t1.35 Volts\n",
+            "DIMM\n" + "DDR4\n" + "32GB (2 x 16GB)\n" + "3200Mhz\n" + "CL16\n" + "1.35 Volts\n",
+            "DDR4\n" + "DIMM\n" + "16GB (2 x 8GB)\n" + "3200Mhz\n" + "CL16\n" + "1.35 Volts\n",
+            "DDR4\n" + "DIMM\n" + "16GB (2 x 8GB)\n" + "3600Mhz\n" + "CL18\n" + "1.35 Volts\n",
 
-            "Product Model\t\tRTX 3060\n" + "Memory Size\t\t12GB\n" + "Max Displays\t\t4\n" +
-                    "Length\t\t\t300mm\n" + "Display Ports\t\t3\n",
-            "Product Model\t\tRX 6700 XT\n" + "Memory Size\t\t12GB\n" + "Max Displays\t\t4\n" +
-                    "Length\t\t\t320mm\n" + "Display Ports\t\t3\n",
-            "Product Model\t\tRX 6700 XT\n" + "Memory Size\t\t12GB\n" + "Max Displays\t\t4\n" +
-                    "Length\t\t\t310mm\n" + "Display Ports\t\t3\n"
+            "RTX 3060\n" + "12GB\n" + "4\n" + "300mm\n" + "3\n",
+            "RX 6700 XT\n" + "12GB\n" + "4\n" + "320mm\n" + "3\n",
+            "RX 6700 XT\n" + "12GB\n" + "4\n" + "310mm\n" + "3\n"
     };
 
     static double[] price = {365.00, 484.99, 270.00,
@@ -90,7 +81,7 @@ public class DataProvider {
         ArrayList<Item> products = new ArrayList<Item>();
         int i = 0;
         for (String index : category) {
-            products.set(i, new Item(Category.getCategory("Motherboard"), name[i], mainImage[i], description[i], price[i]));
+            products.set(i, new Item(Category.getCategory(index), name[i], mainImage[i], description[i], price[i]));
             i++;
         }
         return products;
@@ -99,11 +90,33 @@ public class DataProvider {
     public static ArrayList<Item> getCategory(String specificCategory) {
         ArrayList<Item> products = new ArrayList<Item>();
         int i = 0;
+        int productsIndex = 0;
+        specificCategory = specificCategory.toLowerCase();
         for (String index : category) {
+            index = index.toLowerCase();
             if (index == specificCategory) {
-                products.set(i, new Item(Category.getCategory(specificCategory), name[i], mainImage[i], description[i], price[i]));
-                i++;
+                products.set(productsIndex, new Item(Category.getCategory(category[i]), name[i], mainImage[i], description[i], price[i]));
+                productsIndex++;
             }
+            i++;
+        }
+        return products;
+    }
+
+    public static ArrayList<Item> searchResults(String search) {
+        ArrayList<Item> products = new ArrayList<Item>();
+        int i = 0;
+        int productsIndex = 0;
+        search = search.toLowerCase();
+        for (String index : category) {
+            /* contains is case sensitive */
+            String nameLower = name[i].toLowerCase();
+            index = index.toLowerCase();
+            if (index.contains(search) || nameLower.contains(search)) {
+                products.set(productsIndex, new Item(Category.getCategory(category[i]), name[i], mainImage[i], description[i], price[i]));
+                productsIndex++;
+            }
+            i++;
         }
         return products;
     }
