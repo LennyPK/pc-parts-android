@@ -108,19 +108,13 @@ public class Item {
         return list;
     }
 
-    public static void addItem(Item i){
-        if(!items.contains(i)){
-            items.add(i);
+    public static void addItem(Item item){
+        String[] titles = getTitlesList();
+        for (int i = 0; i < titles.length; i++) {
+            if (item.getTitle() == titles[i]) {
+                return;
+            }
         }
-    }
-
-    //don't know how else to do this, there's probably a better way
-    //if this is not run for both MainActivity and ListActivity, errors happen
-    //This will be done by DataLoader code later
-    public static void INITIALIZE_ITEMS(){
-        addItem(new Item(Category.getCategory("Motherboard"), "Item #1", R.drawable.asus1_2, "Description #1", 99.99));
-        addItem(new Item(Category.getCategory("Motherboard"), "Item #2", R.drawable.asus2_2, "Description #2", 199.99));
-        addItem(new Item(Category.getCategory("Motherboard"), "Item #3", R.drawable.asus1_1, "Description #3", 349.99));
-        addItem(new Item(Category.getCategory("Motherboard"), "Item #4", R.drawable.asus3_2, "Description #4", 129.99));
+        items.add(item);
     }
 }

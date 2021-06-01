@@ -22,18 +22,14 @@ public class DataProvider {
 
 //     static Item[] allItems;
 
-//     public DataProvider(){
-//         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS TUF Gaming X570-PLUS (WI-FI) ATX", R.drawable.motherboard, "it works", 999.99));
-//         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX", R.drawable.motherboard, "this also works", 111.99));
-//         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX", R.drawable.motherboard, "this also works", 111.99));
-//         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX", R.drawable.motherboard, "this also works", 111.99));
-//         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX", R.drawable.motherboard, "this also works", 111.99));
-//         System.out.println(Item.items.size());
-//         for(int i = 0; i < Item.items.size();i++){
-//             System.out.println(Item.getItem(i).getTitle());
-//         }
-//         System.out.println("HELLO!!");
-//     }
+     public DataProvider(){
+         //Item titles must be unique otherwise only first one will be added
+         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS TUF Gaming X570-PLUS (WI-FI) ATX", R.drawable.motherboard, "it works", 999.99));
+         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX 1", R.drawable.motherboard, "this also works", 111.99));
+         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX 2", R.drawable.motherboard, "this also works", 111.99));
+         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX 3", R.drawable.motherboard, "this also works", 111.99));
+         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX 4", R.drawable.motherboard, "this also works", 111.99));
+     }
 
 
     static String[] name = {"ASUS TUF Gaming X570-PLUS (WI-FI) ATX", "ASUS ROG STRIX X570-E Gaming ATX", "ASUS PRIME X570-P/CSM ATX",

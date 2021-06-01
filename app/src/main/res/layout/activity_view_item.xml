@@ -19,8 +19,9 @@
                 android:orientation="vertical"
                 android:padding="8dp">
                 <TextView
-                    android:id="@+id/itemview_title"
+                    android:id="@+id/view_item_title"
                     style="@style/MainActivityHeader"
+                    android:gravity="center"
                     android:text="Title"
                     android:fontFamily="@font/roboto_medium"
                     android:textSize="20dp"/>
@@ -39,9 +40,9 @@
                 android:layout_margin="16dp">
 
                 <ImageView
-                    android:id="@+id/item_imageview"
+                    android:id="@+id/view_item_imageview"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="300dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/gpu" />
             </androidx.cardview.widget.CardView>
@@ -56,7 +57,7 @@
                 android:padding="8dp">
 
                 <TextView
-                    android:id="@+id/itemview_price"
+                    android:id="@+id/view_item_price"
                     style="@style/MainActivityHeader"
                     android:fontFamily="@font/roboto_medium"
                     android:textColor="@color/white"
@@ -82,6 +83,7 @@
 
                 <TextView
                     style="@style/MainActivityHeader"
+                    android:id="@+id/view_item_description"
                     android:fontFamily="@font/roboto_medium"
                     android:text="Description"
                     android:textSize="16dp" />
