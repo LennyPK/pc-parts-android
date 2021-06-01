@@ -15,12 +15,14 @@ public class ViewItemActivity extends AppCompatActivity {
         TextView title;
         TextView price;
         TextView description;
+        TextView category_description;
         ImageView imageView;
         String item_ID;
 
         public ViewHolder() {
             price = findViewById(R.id.view_item_price);
             description = findViewById(R.id.view_item_description);
+            category_description = findViewById(R.id.view_item_category_description);
             title = findViewById(R.id.view_item_title);
             imageView = findViewById(R.id.view_item_imageview);
 
@@ -30,6 +32,7 @@ public class ViewItemActivity extends AppCompatActivity {
                 title.setText(Item.getItem(Integer.parseInt(item_ID)).getTitle());
                 price.setText("$" + Item.getItem(Integer.parseInt(item_ID)).getPrice());
                 description.setText(Item.getItem(Integer.parseInt(item_ID)).getDescription());
+                category_description.setText(Item.getItem(Integer.parseInt(item_ID)).getCategory().getDescription());
                 imageView.setImageResource(Item.getItem(Integer.parseInt(item_ID)).getMainImageID());
             }
         }

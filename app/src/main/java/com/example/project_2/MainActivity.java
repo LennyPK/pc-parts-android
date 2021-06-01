@@ -29,7 +29,6 @@ public class MainActivity extends ListActivity{
     }
 
     ViewHolder vh;
-    DataProvider dp = new DataProvider();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +38,7 @@ public class MainActivity extends ListActivity{
         }
         setContentView(R.layout.activity_main);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        DataProvider.initializeItems();
 
 
         vh = new ViewHolder();

@@ -8,12 +8,14 @@ public class Category {
     private int imageID;
     private static int currentID = 0;
     private int id;
+    private String description;
 
     public static ArrayList<Category> categories = new ArrayList<Category>();
 
-    public Category(String name, int imageID){
+    public Category(String name, int imageID, String description){
         this.name=name;
         this.imageID=imageID;
+        this.description=description;
         this.id = currentID++;
         if (getCategory(name)==null){
             categories.add(this);
@@ -32,6 +34,10 @@ public class Category {
         return id;
     }
 
+    public String getDescription(){
+        return description;
+    }
+
     public static Category getCategory(String name){
         for (Category c : categories) {
             if(c.getName() == name){
@@ -39,6 +45,9 @@ public class Category {
             }
         }
         return null;
+    }
+    public static Category getCategory(int id){
+        return categories.get(id);
     }
 
     public static String[] getNamesList(){

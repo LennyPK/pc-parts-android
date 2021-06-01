@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.project_2.model.Category;
+import com.example.project_2.model.DataProvider;
 import com.example.project_2.model.Item;
 
 import org.w3c.dom.Text;
@@ -19,7 +20,7 @@ import org.w3c.dom.Text;
 public class ListActivity extends AppCompatActivity {
 
     //this will eventually go and be replaced by data from the intent.
-    int[] itemIDs = {0, 1, 2, 3, 4};
+    int[] itemIDs;
 
     class ViewHolder {
         ListView item_listview;
@@ -33,6 +34,7 @@ public class ListActivity extends AppCompatActivity {
             category_position = getIntent().getStringExtra("CATEGORY");
             if(category_position != null){
                 title_text.setText(Category.categories.get(Integer.parseInt(category_position)).getName());
+                itemIDs = DataProvider.getCategory(Integer.parseInt(category_position));
             }
         }
     }
@@ -50,8 +52,11 @@ public class ListActivity extends AppCompatActivity {
         vh = new ViewHolder();
 
         //this should be in ViewHolder but causes issues atm if it is, need to fix
-        vh.item_list = new ItemList(this,itemIDs);
-        vh.item_listview.setAdapter(vh.item_list);
+        if(itemIDs!=null){
+            vh.item_list = new ItemList(this,itemIDs);
+            vh.item_listview.setAdapter(vh.item_list);
+        }
+
 
         //idk if its okay to have this method in MainActivity if it's also called here? Should probably be in a separate class somewhere
         MainActivity.setListViewHeightBasedOnChildren(vh.item_listview);

@@ -50,6 +50,10 @@ public class Item {
         return price;
     }
 
+    public Category getCategory(){
+        return category;
+    }
+
     public int getPopularity(){
         return popularity;
     }

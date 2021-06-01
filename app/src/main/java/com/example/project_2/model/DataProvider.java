@@ -1,35 +1,18 @@
 package com.example.project_2.model;
 
-import android.content.Context;
-import android.util.Log;
-
 import com.example.project_2.R;
-import com.example.project_2.model.Item;
-import com.example.project_2.model.Category;
 
 import java.util.*;
 
 public class DataProvider {
+    //Any categories created here will show up on the main screen
+    public static Category CATEGORY_MOTHERBOARD = new Category("Motherboard", R.drawable.category_motherboard, "MB Socket:\nWi-Fi:\nChipset:\nForm Factor:\nMemory Type:");
+    public static Category CATEGORY_RAM = new Category("RAM", R.drawable.category_ram, "Form Factor:\nMemory Type:\nMemory Capacity:\nMemory Speed:\nCAS Latency:\nVoltage:");
+    public static Category CATEGORY_GPU = new Category("GPU", R.drawable.category_gpu,"Product Model:\nMemory Size:\nMax Displays:\nLength:\nDisplay Ports:");
 
-    static String[] category = {"Motherboard", "Motherboard", "Motherboard",
-                                "RAM", "RAM","RAM",
-                                "GPU", "GPU","GPU"};
-
-    //Any categories created here will show up in the main screen
-    public static Category CATEGORY_MOTHERBOARD = new Category("Motherboard", R.drawable.motherboard);
-    public static Category CATEGORY_RAM = new Category("RAM", R.drawable.ram);
-    public static Category CATEGORY_GPU = new Category("GPU", R.drawable.gpu);
-
-//     static Item[] allItems;
-
-     public DataProvider(){
-         //Item titles must be unique otherwise only first one will be added
-         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS TUF Gaming X570-PLUS (WI-FI) ATX", R.drawable.motherboard, "it works", 999.99, 1));
-         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX 1", R.drawable.motherboard, "this also works", 111.99,1));
-         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX 2", R.drawable.motherboard, "this also works", 111.99,1));
-         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX 3", R.drawable.motherboard, "this also works", 111.99,1));
-         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX 4", R.drawable.motherboard, "this also works", 111.99,1));
-     }
+    static Category[] category = {CATEGORY_MOTHERBOARD, CATEGORY_MOTHERBOARD, CATEGORY_MOTHERBOARD,
+            CATEGORY_RAM, CATEGORY_RAM,CATEGORY_RAM,
+            CATEGORY_GPU, CATEGORY_GPU,CATEGORY_GPU};
 
 
     static String[] name = {"ASUS TUF Gaming X570-PLUS (WI-FI) ATX", "ASUS ROG STRIX X570-E Gaming ATX", "ASUS PRIME X570-P/CSM ATX",
@@ -72,12 +55,28 @@ public class DataProvider {
                              309.99, 214.99, 249.00,
                              1268.99, 1498.99, 1498.99};
 
-//    static Item[] allItems = {new Item(Category.getCategory("Motherboard"), "ASUS TUF Gaming X570-PLUS (WI-FI) ATX", 3, "it works", 365.00),
-//                              new Item(Category.getCategory("Motherboard"), "ASUS ROG STRIX X570-E Gaming ATX", 1, "this also works", 111.99),
-//                              new Item(Category.getCategory("Motherboard"), "ASUS PRIME X570-P/CSM ATX", 1, "this also works!!", 111.99)
-//    };
+    public static void initializeItems(){
+        for(int i = 0; i < name.length; i++){
+            //this is the only time new Item should be called (it mucks things up otherwise)
+            Item.addItem(new Item(category[i],name[i],mainImage[i],description[i],price[i],1));
+        }
+    }
 
-    public static ArrayList<Item> getProducts() {
+    public static int[] getCategory(int categoryID){
+        List<Integer> ids = new ArrayList<Integer>();
+        for(Item item : Item.items){
+            if(item.getCategory() == Category.getCategory(categoryID)){
+                ids.add(item.getID());
+            }
+        }
+        int[] list = new int[ids.size()];
+        for(int i =0; i < ids.size(); i++){
+            list[i] = ids.get(i);
+        }
+        return list;
+    }
+
+    /**public static ArrayList<Item> getProducts() {
         ArrayList<Item> products = new ArrayList<Item>();
         int i = 0;
         for (String index : category) {
@@ -101,24 +100,28 @@ public class DataProvider {
             i++;
         }
         return products;
-    }
+    }**/
 
-    public static ArrayList<Item> searchResults(String search) {
+    public int[] searchResults(String search) {
         ArrayList<Item> products = new ArrayList<Item>();
         int i = 0;
         int productsIndex = 0;
         search = search.toLowerCase();
-        for (String index : category) {
-            /* contains is case sensitive */
+        for (Category index : category) {
+            // contains is case sensitive
             String nameLower = name[i].toLowerCase();
-            index = index.toLowerCase();
-            if (index.contains(search) || nameLower.contains(search)) {
-                products.set(productsIndex, new Item(Category.getCategory(category[i]), name[i], mainImage[i], description[i], price[i],1));
+            String index_name = index.getName().toLowerCase();
+            if (index_name.contains(search) || nameLower.contains(search)) {
+                products.set(productsIndex, Item.getItem(i));
                 productsIndex++;
             }
             i++;
         }
-        return products;
+        int[] list = new int[products.size()];
+        for(int j = 0; j < products.size(); j++){
+            list[j] = products.get(j).getID();
+        }
+        return list;
     }
 
 }
