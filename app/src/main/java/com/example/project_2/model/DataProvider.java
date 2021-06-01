@@ -6,7 +6,7 @@ import java.util.*;
 
 public class DataProvider {
     //Any categories created here will show up on the main screen
-    public static Category CATEGORY_MOTHERBOARD = new Category("Motherboard", R.drawable.category_motherboard, "MB Socket:\nWi-Fi:\nChipset:\nForm Factor:\nMemory Type:");
+    public static Category CATEGORY_MOTHERBOARD = new Category("Motherboards", R.drawable.category_motherboard, "MB Socket:\nWi-Fi:\nChipset:\nForm Factor:\nMemory Type:");
     public static Category CATEGORY_RAM = new Category("RAM", R.drawable.category_ram, "Form Factor:\nMemory Type:\nMemory Capacity:\nMemory Speed:\nCAS Latency:\nVoltage:");
     public static Category CATEGORY_GPU = new Category("GPU", R.drawable.category_gpu,"Product Model:\nMemory Size:\nMax Displays:\nLength:\nDisplay Ports:");
 
