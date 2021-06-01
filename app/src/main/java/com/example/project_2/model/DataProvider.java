@@ -24,11 +24,11 @@ public class DataProvider {
 
      public DataProvider(){
          //Item titles must be unique otherwise only first one will be added
-         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS TUF Gaming X570-PLUS (WI-FI) ATX", R.drawable.motherboard, "it works", 999.99));
-         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX 1", R.drawable.motherboard, "this also works", 111.99));
-         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX 2", R.drawable.motherboard, "this also works", 111.99));
-         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX 3", R.drawable.motherboard, "this also works", 111.99));
-         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX 4", R.drawable.motherboard, "this also works", 111.99));
+         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS TUF Gaming X570-PLUS (WI-FI) ATX", R.drawable.motherboard, "it works", 999.99, 1));
+         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX 1", R.drawable.motherboard, "this also works", 111.99,1));
+         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX 2", R.drawable.motherboard, "this also works", 111.99,1));
+         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX 3", R.drawable.motherboard, "this also works", 111.99,1));
+         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX 4", R.drawable.motherboard, "this also works", 111.99,1));
      }
 
 
@@ -81,7 +81,7 @@ public class DataProvider {
         ArrayList<Item> products = new ArrayList<Item>();
         int i = 0;
         for (String index : category) {
-            products.set(i, new Item(Category.getCategory(index), name[i], mainImage[i], description[i], price[i]));
+            products.set(i, new Item(Category.getCategory(index), name[i], mainImage[i], description[i], price[i],1));
             i++;
         }
         return products;
@@ -95,7 +95,7 @@ public class DataProvider {
         for (String index : category) {
             index = index.toLowerCase();
             if (index == specificCategory) {
-                products.set(productsIndex, new Item(Category.getCategory(category[i]), name[i], mainImage[i], description[i], price[i]));
+                products.set(productsIndex, new Item(Category.getCategory(category[i]), name[i], mainImage[i], description[i], price[i],1));
                 productsIndex++;
             }
             i++;
@@ -113,7 +113,7 @@ public class DataProvider {
             String nameLower = name[i].toLowerCase();
             index = index.toLowerCase();
             if (index.contains(search) || nameLower.contains(search)) {
-                products.set(productsIndex, new Item(Category.getCategory(category[i]), name[i], mainImage[i], description[i], price[i]));
+                products.set(productsIndex, new Item(Category.getCategory(category[i]), name[i], mainImage[i], description[i], price[i],1));
                 productsIndex++;
             }
             i++;

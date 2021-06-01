@@ -6,30 +6,37 @@
     android:layout_height="match_parent"
     android:padding="8dp"
     tools:context=".MainActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <SearchView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Search all..."
-        android:textColor="#FFFFFF" />
-
-    <androidx.cardview.widget.CardView
-        style="@style/CategoryCard">
-        <TextView
-            style="@style/MainActivityHeader"
-            android:text="Top Picks"/>
-    </androidx.cardview.widget.CardView>
-
         <androidx.cardview.widget.CardView
-            style="@style/CategoryCard">
+            style="@style/CategoryCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <SearchView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Search all..."
+                android:textColor="#FFFFFF" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView style="@style/CategoryCard">
+
             <TextView
                 style="@style/MainActivityHeader"
-                android:text="Categories"/>
+                android:text="Top Picks" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView style="@style/CategoryCard">
+
+            <TextView
+                style="@style/MainActivityHeader"
+                android:text="Categories" />
         </androidx.cardview.widget.CardView>
 
         <ListView
@@ -38,7 +45,6 @@
             android:layout_height="match_parent"
             android:divider="@android:color/transparent"
             android:dividerHeight="8dp"
-            android:scrollbars="none"
-            />
+            android:scrollbars="none" />
     </LinearLayout>
 </ScrollView>

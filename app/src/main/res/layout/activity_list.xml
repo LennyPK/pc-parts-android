@@ -11,13 +11,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/CategoryCard">
         <SearchView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Search all..."
             android:textColor="#FFFFFF" />
+</androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             style="@style/CategoryCard">

@@ -15,16 +15,18 @@ public class Item {
     private int mainImageID;
     private String description;
     private double price;
+    private int popularity;
 
     public static List<Item> items = new ArrayList<Item>();
 
-    public Item(Category category, String title, int mainImageID, String description, double price) {
+    public Item(Category category, String title, int mainImageID, String description, double price, int popularity) {
         this.category = category;
         this.title=title;
         this.imageIDs=imageIDs;
         this.description=description;
         this.mainImageID = mainImageID;
         this.price=price;
+        this.popularity = popularity;
         this.id = currentID++;
     }
 
@@ -46,6 +48,14 @@ public class Item {
 
     public double getPrice(){
         return price;
+    }
+
+    public int getPopularity(){
+        return popularity;
+    }
+
+    public void incPopularity(){
+        popularity++;
     }
 
     public int getID() {

@@ -18,7 +18,6 @@ public class ViewItemActivity extends AppCompatActivity {
         ImageView imageView;
         String item_ID;
 
-
         public ViewHolder() {
             price = findViewById(R.id.view_item_price);
             description = findViewById(R.id.view_item_description);
@@ -27,13 +26,13 @@ public class ViewItemActivity extends AppCompatActivity {
 
             item_ID = getIntent().getStringExtra("ITEM_ID");
             if(item_ID != null){
+                Item.getItem(Integer.parseInt(item_ID)).incPopularity();
                 title.setText(Item.getItem(Integer.parseInt(item_ID)).getTitle());
                 price.setText("$" + Item.getItem(Integer.parseInt(item_ID)).getPrice());
                 description.setText(Item.getItem(Integer.parseInt(item_ID)).getDescription());
                 imageView.setImageResource(Item.getItem(Integer.parseInt(item_ID)).getMainImageID());
             }
         }
-
     }
 
     ViewHolder vh;
@@ -41,6 +40,9 @@ public class ViewItemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         setContentView(R.layout.activity_view_item);
 
         vh = new ViewHolder();
