@@ -28,9 +28,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a082982f-1022-4c43-a5e8-808259dc5bc8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Products/Motherboards/~$therboards.docx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project_2/model/DataProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project_2/model/DataProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project_2/model/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project_2/model/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/asus1_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/asus1_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/asus1_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/asus1_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/asus2_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/asus2_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/asus2_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/asus2_4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/asus3_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/asus3_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/asus3_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/asus3_4.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
