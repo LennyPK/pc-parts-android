@@ -28,6 +28,7 @@
                 android:padding="4dp">
             <TextView
                 style="@style/ItemTitleText"
+                android:id="@+id/list_title_text"
                 android:text="Showing [Category] results for 'Search Term blah basdasd':"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>

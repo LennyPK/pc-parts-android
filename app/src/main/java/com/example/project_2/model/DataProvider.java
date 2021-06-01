@@ -15,6 +15,27 @@ public class DataProvider {
                                 "ram", "ram","ram",
                                 "gpu", "gpu","gpu"};
 
+    //Any categories created here will show up in the main screen
+    public static Category CATEGORY_MOTHERBOARD = new Category("Motherboard", R.drawable.motherboard);
+    public static Category CATEGORY_RAM = new Category("RAM", R.drawable.ram);
+    public static Category CATEGORY_GPU = new Category("GPU", R.drawable.gpu);
+
+//     static Item[] allItems;
+
+//     public DataProvider(){
+//         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS TUF Gaming X570-PLUS (WI-FI) ATX", R.drawable.motherboard, "it works", 999.99));
+//         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX", R.drawable.motherboard, "this also works", 111.99));
+//         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX", R.drawable.motherboard, "this also works", 111.99));
+//         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX", R.drawable.motherboard, "this also works", 111.99));
+//         Item.addItem(new Item(CATEGORY_MOTHERBOARD, "ASUS ROG STRIX X570-E Gaming ATX", R.drawable.motherboard, "this also works", 111.99));
+//         System.out.println(Item.items.size());
+//         for(int i = 0; i < Item.items.size();i++){
+//             System.out.println(Item.getItem(i).getTitle());
+//         }
+//         System.out.println("HELLO!!");
+//     }
+
+
     static String[] name = {"ASUS TUF Gaming X570-PLUS (WI-FI) ATX", "ASUS ROG STRIX X570-E Gaming ATX", "ASUS PRIME X570-P/CSM ATX",
                             "HyperX Fury 32GB RAM (2 x 16GB) DDR4-3200MHz", "G.SKILL Trident Z RGB F4-3200C16D-16GTZR 16GB RAM (2 x 8GB) DDR4 3200Mhz",
                             "G.SKILL Trident Z Neo RGB F4-3600C18D-16GTZN 16 GB RAM (2X 8GB) DDR4 3600MHz",
