@@ -20,6 +20,7 @@
             <SearchView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/main_search_view"
                 android:gravity="center"
                 android:text="Search all..."
                 android:textColor="#FFFFFF" />

@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.project_2.model.Category;
 import com.example.project_2.model.DataProvider;
@@ -26,16 +29,42 @@ public class ListActivity extends AppCompatActivity {
         ListView item_listview;
         ItemList item_list;
         TextView title_text;
+        SearchView search_view;
+        ImageButton home_button;
         String category_position;
+        String search_term;
 
         public ViewHolder() {
             item_listview = findViewById(R.id.item_list_view);
             title_text = findViewById(R.id.list_title_text);
+            search_view = findViewById(R.id.list_search_view);
+            home_button = findViewById(R.id.list_home_button);
             category_position = getIntent().getStringExtra("CATEGORY");
-            if(category_position != null){
-                title_text.setText(Category.categories.get(Integer.parseInt(category_position)).getName());
-                itemIDs = DataProvider.getCategory(Integer.parseInt(category_position));
+            search_term = getIntent().getStringExtra("SEARCH_TERM");
+
+            String title = "There are no results";
+
+            if(search_term != null){
+                if(category_position != null){
+                    itemIDs = DataProvider.searchResults(search_term, Category.categories.get(Integer.parseInt(category_position)));
+                    title = "Showing " + Category.categories.get(Integer.parseInt(category_position)).getName() + " results for '" + search_term + "':";
+                } else {
+                    itemIDs = DataProvider.searchResults(search_term, null);
+                    title = "Showing all results for '" + search_term + "':";
+                }
+            } else {
+                if(category_position != null){
+                    itemIDs = DataProvider.getCategory(Integer.parseInt(category_position));
+                    title = "Showing " + Category.categories.get(Integer.parseInt(category_position)).getName() + " results:";
+                }
             }
+            if(itemIDs != null && itemIDs.length==0){
+                Toast toast = Toast.makeText(getApplicationContext(),
+                        "There are no results",
+                        Toast.LENGTH_SHORT);
+                toast.show();
+            }
+            title_text.setText(title);
         }
     }
 
@@ -67,6 +96,31 @@ public class ListActivity extends AppCompatActivity {
                 Intent ViewActivity = new Intent(getBaseContext(), ViewItemActivity.class);
                 ViewActivity.putExtra("ITEM_ID", Integer.toString(itemIDs[position]));
                 startActivity(ViewActivity);
+            }
+        });
+
+        vh.search_view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Intent listActivity = new Intent(getBaseContext(), ListActivity.class);
+                listActivity.putExtra("SEARCH_TERM", query);
+                listActivity.putExtra("CATEGORY", vh.category_position);
+                startActivity(listActivity);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                return false;
+            }
+        });
+
+        vh.home_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainActivity = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(mainActivity);
             }
         });
     }

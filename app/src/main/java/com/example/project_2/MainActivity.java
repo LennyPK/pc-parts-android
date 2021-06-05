@@ -11,6 +11,7 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.example.project_2.model.Category;
 import com.example.project_2.model.DataProvider;
@@ -23,8 +24,12 @@ public class MainActivity extends ListActivity{
 
         CategoryList category_list;
 
+        SearchView search_view;
+
         public ViewHolder() {
+
             category_listview = findViewById(R.id.category_list_view);
+            search_view = findViewById(R.id.main_search_view);
         }
     }
 
@@ -51,9 +56,26 @@ public class MainActivity extends ListActivity{
         vh.category_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent ListActivity = new Intent(getBaseContext(), ListActivity.class);
-                ListActivity.putExtra("CATEGORY", Integer.toString(position));
-                startActivity(ListActivity);
+                Intent listActivity = new Intent(getBaseContext(), ListActivity.class);
+                listActivity.putExtra("CATEGORY", Integer.toString(position));
+                startActivity(listActivity);
+            }
+        });
+
+        vh.search_view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                Intent listActivity = new Intent(getBaseContext(), ListActivity.class);
+                listActivity.putExtra("SEARCH_TERM", query);
+                startActivity(listActivity);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                return false;
             }
         });
     }

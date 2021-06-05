@@ -2,7 +2,10 @@ package com.example.project_2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +20,7 @@ public class ViewItemActivity extends AppCompatActivity {
         TextView description;
         TextView category_description;
         ImageView imageView;
+        ImageButton home_button;
         String item_ID;
 
         public ViewHolder() {
@@ -24,6 +28,7 @@ public class ViewItemActivity extends AppCompatActivity {
             description = findViewById(R.id.view_item_description);
             category_description = findViewById(R.id.view_item_category_description);
             title = findViewById(R.id.view_item_title);
+            home_button = findViewById(R.id.view_home_button);
             imageView = findViewById(R.id.view_item_imageview);
 
             item_ID = getIntent().getStringExtra("ITEM_ID");
@@ -49,5 +54,13 @@ public class ViewItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_item);
 
         vh = new ViewHolder();
+
+        vh.home_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainActivity = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(mainActivity);
+            }
+        });
     }
 }

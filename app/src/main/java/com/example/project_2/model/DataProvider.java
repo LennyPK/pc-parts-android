@@ -196,21 +196,18 @@ public class DataProvider {
         return products;
     }**/
 
-    public int[] searchResults(String search) {
+    public static int[] searchResults(String search_term, Category search_category) {
         ArrayList<Item> products = new ArrayList<Item>();
-        int i = 0;
-        int productsIndex = 0;
-        search = search.toLowerCase();
-        for (Category index : category) {
-            // contains is case sensitive
-            String nameLower = name[i].toLowerCase();
-            String index_name = index.getName().toLowerCase();
-            if (index_name.contains(search) || nameLower.contains(search)) {
-                products.set(productsIndex, Item.getItem(i));
-                productsIndex++;
+        search_term = search_term.toLowerCase();
+        for(int i = 0; i < category.length; i++){
+            if(name[i].toLowerCase().contains(search_term) || category[i].getName().toLowerCase().contains(search_term)){
+                if(search_category == null || category[i] == search_category){
+                    products.add(Item.getItem(i));
+                }
             }
-            i++;
         }
+
+
         int[] list = new int[products.size()];
         for(int j = 0; j < products.size(); j++){
             list[j] = products.get(j).getID();
