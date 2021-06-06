@@ -4,8 +4,8 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo"
-        android:label="PC Spec Viewer"
+        android:icon="@mipmap/ic_launcher"
+        android:label="PC Specs"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_2">
