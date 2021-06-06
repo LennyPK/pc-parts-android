@@ -179,32 +179,6 @@ public class DataProvider {
         return list;
     }
 
-    /**public static ArrayList<Item> getProducts() {
-        ArrayList<Item> products = new ArrayList<Item>();
-        int i = 0;
-        for (String index : category) {
-            products.set(i, new Item(Category.getCategory(index), name[i], mainImage[i], description[i], price[i],1));
-            i++;
-        }
-        return products;
-    }
-
-    public static ArrayList<Item> getCategory(String specificCategory) {
-        ArrayList<Item> products = new ArrayList<Item>();
-        int i = 0;
-        int productsIndex = 0;
-        specificCategory = specificCategory.toLowerCase();
-        for (String index : category) {
-            index = index.toLowerCase();
-            if (index == specificCategory) {
-                products.set(productsIndex, new Item(Category.getCategory(category[i]), name[i], mainImage[i], description[i], price[i],1));
-                productsIndex++;
-            }
-            i++;
-        }
-        return products;
-    }**/
-
     public static int[] searchResults(String search_term, Category search_category) {
         ArrayList<Item> products = new ArrayList<Item>();
         search_term = search_term.toLowerCase();

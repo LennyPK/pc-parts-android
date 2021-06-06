@@ -2,6 +2,7 @@ package com.example.project_2;
 
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,16 +18,58 @@ import com.example.project_2.model.DataProvider;
 public class MainActivity extends ListActivity{
 
     class ViewHolder {
+        Activity context;
+
         ListView category_listview;
-
         CategoryList category_list;
-
         SearchView search_view;
 
-        public ViewHolder() {
+        public ViewHolder(Activity context) {
+            this.context=context;
+            initializeItems();
+            setListeners();
 
+            category_list = new CategoryList(context);
+            category_listview.setAdapter(category_list);
+            setListViewHeightBasedOnChildren(category_listview);
+        }
+
+        public void initializeItems(){
             category_listview = findViewById(R.id.category_list_view);
             search_view = findViewById(R.id.main_search_view);
+        }
+
+        public void setListeners(){
+            search_view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    search_view.setIconified(false);
+                }
+            });
+            category_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent listActivity = new Intent(getBaseContext(), ListActivity.class);
+                    listActivity.putExtra("CATEGORY", Integer.toString(position));
+                    startActivity(listActivity);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
+            });
+            search_view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    Intent listActivity = new Intent(getBaseContext(), ListActivity.class);
+                    listActivity.putExtra("SEARCH_TERM", query);
+                    startActivity(listActivity);
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+
+                    return false;
+                }
+            });
         }
     }
 
@@ -43,39 +86,7 @@ public class MainActivity extends ListActivity{
         DataProvider.initializeItems();
 
 
-        vh = new ViewHolder();
-
-        //This stuff should be inside ViewHolder but it causes problems if it is atm, will fix later
-        vh.category_list = new CategoryList(this);
-        vh.category_listview.setAdapter(vh.category_list);
-        setListViewHeightBasedOnChildren(vh.category_listview);
-
-        vh.category_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent listActivity = new Intent(getBaseContext(), ListActivity.class);
-                listActivity.putExtra("CATEGORY", Integer.toString(position));
-                startActivity(listActivity);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
-        });
-
-        vh.search_view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-                Intent listActivity = new Intent(getBaseContext(), ListActivity.class);
-                listActivity.putExtra("SEARCH_TERM", query);
-                startActivity(listActivity);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-
-                return false;
-            }
-        });
+        vh = new ViewHolder(this);
     }
 
     //this function is for resizing the listview so that it doesn't do weird scroll thing

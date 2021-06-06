@@ -36,7 +36,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/top_picks_recycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
         <androidx.cardview.widget.CardView style="@style/CategoryCard">
 
