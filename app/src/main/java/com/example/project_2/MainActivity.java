@@ -56,6 +56,7 @@ public class MainActivity extends ListActivity{
                 Intent listActivity = new Intent(getBaseContext(), ListActivity.class);
                 listActivity.putExtra("CATEGORY", Integer.toString(position));
                 startActivity(listActivity);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 

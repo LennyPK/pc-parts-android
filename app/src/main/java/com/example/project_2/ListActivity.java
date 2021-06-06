@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Fade;
+import android.transition.Slide;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
@@ -30,6 +32,8 @@ public class ListActivity extends AppCompatActivity {
         String category_position;
         String search_term;
 
+        Fade fade;
+
         public ViewHolder() {
             item_listview = findViewById(R.id.item_list_view);
             title_text = findViewById(R.id.list_title_text);
@@ -37,6 +41,8 @@ public class ListActivity extends AppCompatActivity {
             home_button = findViewById(R.id.list_home_button);
             category_position = getIntent().getStringExtra("CATEGORY");
             search_term = getIntent().getStringExtra("SEARCH_TERM");
+
+            fade = new Fade(Fade.IN);
 
             String title = "There are no results";
 
@@ -92,6 +98,7 @@ public class ListActivity extends AppCompatActivity {
                 Intent ViewActivity = new Intent(getBaseContext(), ViewItemActivity.class);
                 ViewActivity.putExtra("ITEM_ID", Integer.toString(itemIDs[position]));
                 startActivity(ViewActivity);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
 
@@ -117,7 +124,14 @@ public class ListActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mainActivity = new Intent(getBaseContext(), MainActivity.class);
                 startActivity(mainActivity);
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
             }
         });
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 }

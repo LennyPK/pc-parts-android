@@ -161,8 +161,7 @@ public class DataProvider {
             for(int j = 0; j < images[i].length; j++){
                 imageIDs.add(images[i][j]);
             }
-            Item.addItem(new Item(category[i],name[i],imageIDs,description[i],price[i],1));
-
+            Item.addItem(new Item(category[i],name[i],imageIDs,description[i],price[i],popularity[i]));
         }
     }
 

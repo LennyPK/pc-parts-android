@@ -103,11 +103,10 @@ public class ViewItemActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mainActivity = new Intent(getBaseContext(), MainActivity.class);
                 startActivity(mainActivity);
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
             }
         });
         if(vh.item_ID != null){
-            System.out.println("HELLO!!!!");
-            System.out.println(Item.getItem(Integer.parseInt(vh.item_ID)).getImageIDs());
             vh.imageAdapter = new ImageAdapter(this, Item.getItem(Integer.parseInt(vh.item_ID)).getImageIDs());
             vh.viewPager.setAdapter(vh.imageAdapter);
             vh.viewPager.setClipToPadding(false);
@@ -115,5 +114,11 @@ public class ViewItemActivity extends AppCompatActivity {
             vh.viewPager.setPadding(16,0,16,0);
         }
 
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 }
