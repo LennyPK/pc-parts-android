@@ -252,8 +252,8 @@ public class DataProvider {
                 }
             }
         }
-        // getting the top 6 picks
-        int[] list = new int[6];
+        // getting the top  picks
+        int[] list = new int[popularity.length];
         for (int j = list.length - 1; j == 0; j--) {
             products.add(Item.items.get(indexes[j]));
         }
