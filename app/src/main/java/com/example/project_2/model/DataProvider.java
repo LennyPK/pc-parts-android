@@ -225,4 +225,43 @@ public class DataProvider {
         return list;
     }
 
+    public static int[] topPicks() {
+        ArrayList<Item> products = new ArrayList<Item>();
+        // first we need to sort the popularity list in order to see which items have been most visited
+        // aka "top-picked"
+
+        // array to keep track of the item when resorting popularity array
+        int[] indexes = new int[popularity.length];
+        for (int i = 0; i < indexes.length; i++) {
+            indexes[i] = i;
+        }
+        // initialising a new array to not change the popularity array that we have in dataprovider
+        int[] topPicks = popularity;
+        int temp;
+        int tempIndex;
+        for (int i = 1; i < topPicks.length; i++) {
+            for (int j = i; j > 0; j--) {
+                if (topPicks[j] < topPicks [j - 1]) {
+                    temp = topPicks[j];
+                    tempIndex = indexes[j];
+
+                    topPicks[j] = topPicks[j - 1];
+                    indexes[j] = indexes[j - 1];
+
+                    topPicks[j - 1] = temp;
+                    indexes[j - 1] = tempIndex;
+                }
+            }
+        }
+        // getting the top 6 picks
+        int[] list = new int[6];
+        for (int j = list.length - 1; j == 0; j--) {
+            products.add(Item.items.get(indexes[j]));
+        }
+        for (int j = list.length - 1; j == 0; j--) {
+            list[j] = products.get(j).getID();
+        }
+
+        return list;
+    }
 }
