@@ -149,6 +149,11 @@ public class DataProvider {
                              309.99, 214.99, 249.00, 394.99, 452.04, 148.99, 275.00, 368.99, 469.28, 1699.00,
                              1268.99, 1498.99, 1498.99, 1329.00, 3498.99, 2499.00, 1699.00, 2643.85, 1999.00, 3848.99};
 
+    static int[] popularity = {8, 1, 2, 5, 6, 6, 8, 4, 1, 1,
+                               4, 4, 9, 1, 5, 8, 9, 9, 4, 1,
+                               6, 4, 9, 4, 1, 2, 8, 9, 4, 9};
+
+
     public static void initializeItems(){
         for(int i = 0; i < name.length; i++){
             //this is the only time new Item should be called (it mucks things up otherwise)
