@@ -4,18 +4,15 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 
-import com.example.project_2.model.Category;
+import com.example.project_2.adapter.CategoryList;
 import com.example.project_2.model.DataProvider;
-import com.example.project_2.model.Item;
 
 public class MainActivity extends ListActivity{
 

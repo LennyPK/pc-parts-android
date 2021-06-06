@@ -21,8 +21,9 @@
                 android:layout_height="50dp"
                 android:layout_marginRight="4dp"
                 android:backgroundTint="#803BE0"
-                android:src="@drawable/home_icon"
-                android:scaleType="fitCenter"/>
+                android:src="@drawable/ic_home_button"
+                android:scaleType="fitCenter"
+                />
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

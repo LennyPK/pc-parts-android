@@ -11,20 +11,18 @@ public class Item {
     private int id;
     private Category category;
     private String title;
-    private List<Integer> imageIDs;
-    private int mainImageID;
+    private ArrayList<Integer> imageIDs;
     private String description;
     private double price;
     private int popularity;
 
-    public static List<Item> items = new ArrayList<Item>();
+    public static ArrayList<Item> items = new ArrayList<Item>();
 
-    public Item(Category category, String title, int mainImageID, String description, double price, int popularity) {
+    public Item(Category category, String title, ArrayList<Integer> imageIDs, String description, double price, int popularity) {
         this.category = category;
         this.title=title;
         this.imageIDs=imageIDs;
         this.description=description;
-        this.mainImageID = mainImageID;
         this.price=price;
         this.popularity = popularity;
         this.id = currentID++;
@@ -34,12 +32,8 @@ public class Item {
         return title;
     }
 
-    public List<Integer> getImageIDs() {
+    public ArrayList<Integer> getImageIDs() {
         return imageIDs;
-    }
-
-    public int getMainImageID(){
-        return mainImageID;
     }
 
     public String getDescription() {
@@ -86,22 +80,6 @@ public class Item {
         String[] list = new String[ids.length];
         for(int i = 0; i < ids.length; i++){
             list[i] = items.get(i).getTitle();
-        }
-        return list;
-    }
-
-    public static int[] getImageIDsList(){
-        int[] list = new int[items.size()];
-        for(int i = 0; i < items.size(); i++){
-            list[i] = items.get(i).getMainImageID();
-        }
-        return list;
-    }
-
-    public static int[] getImageIDsList(int[] ids){
-        int[] list = new int[ids.length];
-        for(int i = 0; i < ids.length; i++){
-            list[i] = items.get(i).getMainImageID();
         }
         return list;
     }

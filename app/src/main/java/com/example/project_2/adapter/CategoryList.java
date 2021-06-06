@@ -1,4 +1,4 @@
-package com.example.project_2;
+package com.example.project_2.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.project_2.R;
 import com.example.project_2.model.Category;
 
 public class CategoryList extends ArrayAdapter{

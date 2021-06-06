@@ -5,20 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.project_2.adapter.ItemList;
 import com.example.project_2.model.Category;
 import com.example.project_2.model.DataProvider;
-import com.example.project_2.model.Item;
-
-import org.w3c.dom.Text;
 
 public class ListActivity extends AppCompatActivity {
 

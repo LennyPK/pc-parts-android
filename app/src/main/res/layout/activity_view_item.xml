@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     android:padding="8dp"
     tools:context=".ListActivity">
 
@@ -22,7 +23,7 @@
             android:layout_height="50dp"
             android:layout_marginRight="4dp"
             android:backgroundTint="#803BE0"
-            android:src="@drawable/home_icon"
+            android:src="@drawable/ic_home_button"
             android:scaleType="fitCenter"/>
         <androidx.cardview.widget.CardView style="@style/CategoryCard">
             <LinearLayout
@@ -40,26 +41,32 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_item_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="332dp"
+            android:layout_gravity="center"
+            android:clipToPadding="false"
+            android:overScrollMode="never" />
+        <ImageButton
+            android:id="@+id/viewpager_left_nav"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical|left"
+            android:src="@drawable/ic_baseline_chevron_left_24"
+            android:backgroundTint="#323232"/>
+        <ImageButton
+            android:id="@+id/viewpager_right_nav"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical|right"
+            android:backgroundTint="#323232"
+            android:src="@drawable/ic_baseline_chevron_right_24"/>
 
-        <androidx.cardview.widget.CardView
-            style="@style/CategoryCard"
-            android:padding="16dp">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/item_imagecard"
-                style="@style/ItemImageCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp">
-
-                <ImageView
-                    android:id="@+id/view_item_imageview"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/category_gpu" />
-            </androidx.cardview.widget.CardView>
-        </androidx.cardview.widget.CardView>
+    </FrameLayout>
 
         <androidx.cardview.widget.CardView style="@style/CategoryCard">
 

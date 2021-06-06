@@ -152,7 +152,12 @@ public class DataProvider {
     public static void initializeItems(){
         for(int i = 0; i < name.length; i++){
             //this is the only time new Item should be called (it mucks things up otherwise)
-            Item.addItem(new Item(category[i],name[i],mainImage[i],description[i],price[i],1));
+            ArrayList<Integer> imageIDs = new ArrayList<Integer>();
+            for(int j = 0; j < images[i].length; j++){
+                imageIDs.add(images[i][j]);
+            }
+            Item.addItem(new Item(category[i],name[i],imageIDs,description[i],price[i],1));
+
         }
     }
 

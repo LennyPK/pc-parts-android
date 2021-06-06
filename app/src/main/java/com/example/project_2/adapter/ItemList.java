@@ -1,4 +1,4 @@
-package com.example.project_2;
+package com.example.project_2.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.project_2.R;
 import com.example.project_2.model.Item;
 
 public class ItemList extends ArrayAdapter {
@@ -34,7 +35,7 @@ public class ItemList extends ArrayAdapter {
 
         itemTitle.setText(Item.getItem(IDList[position]).getTitle());
         itemPrice.setText("$" + Double.toString(Item.getItem(IDList[position]).getPrice()));
-        imageView.setImageResource(Item.getItem(IDList[position]).getMainImageID());
+        imageView.setImageResource(Item.getItem(IDList[position]).getImageIDs().get(0));
         return item;
     }
 }
