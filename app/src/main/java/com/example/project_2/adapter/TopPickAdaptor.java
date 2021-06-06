@@ -20,25 +20,37 @@ import java.util.List;
 
 public class TopPickAdaptor extends RecyclerView.Adapter<TopPickAdaptor.ViewHolder> {
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    private onItemListener onItemListener;
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView itemTitle;
         public TextView itemPrice;
         public ImageView imageView;
 
-        public ViewHolder(View item) {
-            super(item);
+        onItemListener onItemListener;
 
+        public ViewHolder(View item, onItemListener onItemListener) {
+            super(item);
+            this.onItemListener=onItemListener;
             itemTitle = (TextView) item.findViewById(R.id.item_title);
             itemPrice = (TextView) item.findViewById(R.id.item_price);
             imageView = (ImageView) item.findViewById(R.id.item_imageview);
+
+            item.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            onItemListener.onItemClick(getAdapterPosition());
         }
     }
 
-    private List<Item> mItems;
+    private List<Integer> mItems;
     private Context mContext;
 
-    public TopPickAdaptor(List<Item> topPicks) {
+    public TopPickAdaptor(List<Integer> topPicks, onItemListener onItemListener) {
+        this.onItemListener=onItemListener;
         mItems = topPicks;
     }
 
@@ -51,7 +63,7 @@ public class TopPickAdaptor extends RecyclerView.Adapter<TopPickAdaptor.ViewHold
         View itemView = inflater.inflate(R.layout.item_card, parent, false);
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(itemView);
+        ViewHolder viewHolder = new ViewHolder(itemView, onItemListener);
         return viewHolder;
     }
 
@@ -59,7 +71,7 @@ public class TopPickAdaptor extends RecyclerView.Adapter<TopPickAdaptor.ViewHold
     @Override
     public void onBindViewHolder(TopPickAdaptor.ViewHolder holder, int position) {
         // Get the data model based on position
-        Item item = mItems.get(position);
+        Item item = Item.getItem(mItems.get(position));
 
         // Set item views based on your views and data model
         TextView itemTitle = holder.itemTitle;
@@ -75,6 +87,10 @@ public class TopPickAdaptor extends RecyclerView.Adapter<TopPickAdaptor.ViewHold
     @Override
     public int getItemCount() {
         return mItems.size();
+    }
+
+    public interface onItemListener{
+        void onItemClick(int position);
     }
 
 }

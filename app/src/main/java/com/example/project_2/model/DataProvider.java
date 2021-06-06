@@ -190,7 +190,6 @@ public class DataProvider {
             }
         }
 
-
         int[] list = new int[products.size()];
         for(int j = 0; j < products.size(); j++){
             list[j] = products.get(j).getID();
@@ -198,43 +197,25 @@ public class DataProvider {
         return list;
     }
 
-    public static int[] topPicks() {
-        ArrayList<Item> products = new ArrayList<Item>();
-        // first we need to sort the popularity list in order to see which items have been most visited
-        // aka "top-picked"
+    public static List<Integer> topPicks() {
+        Integer[] idx = new Integer[name.length];
 
-        // array to keep track of the item when resorting popularity array
-        int[] indexes = new int[popularity.length];
-        for (int i = 0; i < indexes.length; i++) {
-            indexes[i] = i;
+        for(int i = 0; i < name.length; i++){
+            idx[i] = i;
         }
-        // initialising a new array to not change the popularity array that we have in dataprovider
-        int[] topPicks = popularity;
-        int temp;
-        int tempIndex;
-        for (int i = 1; i < topPicks.length; i++) {
-            for (int j = i; j > 0; j--) {
-                if (topPicks[j] < topPicks [j - 1]) {
-                    temp = topPicks[j];
-                    tempIndex = indexes[j];
 
-                    topPicks[j] = topPicks[j - 1];
-                    indexes[j] = indexes[j - 1];
-
-                    topPicks[j - 1] = temp;
-                    indexes[j - 1] = tempIndex;
-                }
+        Arrays.sort(idx, new Comparator<Integer>() {
+            @Override public int compare(final Integer o1, final Integer o2) {
+                return Float.compare(popularity[o1], popularity[o2]);
             }
-        }
-        // getting the top  picks
-        int[] list = new int[popularity.length];
-        for (int j = list.length - 1; j == 0; j--) {
-            products.add(Item.items.get(indexes[j]));
-        }
-        for (int j = list.length - 1; j == 0; j--) {
-            list[j] = products.get(j).getID();
-        }
+        });
 
+        List<Integer> list = Arrays.asList(idx.clone());
+        Collections.reverse(list);
         return list;
+    }
+
+    public static void incPopularity(int id){
+        popularity[id]++;
     }
 }

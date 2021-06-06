@@ -1,6 +1,7 @@
 package com.example.project_2;
 
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,9 +14,21 @@ import android.widget.ListView;
 import android.widget.SearchView;
 
 import com.example.project_2.adapter.CategoryList;
+import com.example.project_2.adapter.TopPickAdaptor;
 import com.example.project_2.model.DataProvider;
 
-public class MainActivity extends ListActivity{
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends ListActivity implements TopPickAdaptor.onItemListener{
+
+    @Override
+    public void onItemClick(int position) {
+        Intent ViewActivity = new Intent(getBaseContext(), ViewItemActivity.class);
+        ViewActivity.putExtra("ITEM_ID", Integer.toString(DataProvider.topPicks().get(position)));
+        startActivity(ViewActivity);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+    }
 
     class ViewHolder {
         Activity context;
@@ -23,6 +36,9 @@ public class MainActivity extends ListActivity{
         ListView category_listview;
         CategoryList category_list;
         SearchView search_view;
+
+        RecyclerView top_picks;
+        TopPickAdaptor top_picks_adapter;
 
         public ViewHolder(Activity context) {
             this.context=context;
@@ -37,6 +53,7 @@ public class MainActivity extends ListActivity{
         public void initializeItems(){
             category_listview = findViewById(R.id.category_list_view);
             search_view = findViewById(R.id.main_search_view);
+            top_picks = findViewById(R.id.top_picks_recycler);
         }
 
         public void setListeners(){
@@ -87,6 +104,11 @@ public class MainActivity extends ListActivity{
 
 
         vh = new ViewHolder(this);
+
+        vh.top_picks_adapter = new TopPickAdaptor(DataProvider.topPicks(), this);
+        vh.top_picks.setAdapter(vh.top_picks_adapter);
+        vh.top_picks.setClipToPadding(false);
+        vh.top_picks.setPadding(16, 0, 16, 0);
     }
 
     //this function is for resizing the listview so that it doesn't do weird scroll thing

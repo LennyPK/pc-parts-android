@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.project_2.adapter.ImageAdapter;
 import com.example.project_2.model.Category;
+import com.example.project_2.model.DataProvider;
 import com.example.project_2.model.Item;
 
 public class ViewItemActivity extends AppCompatActivity {
@@ -42,7 +43,7 @@ public class ViewItemActivity extends AppCompatActivity {
             getIntents();
 
             if (item_ID != null) {
-                Item.getItem(Integer.parseInt(item_ID)).incPopularity();
+                DataProvider.incPopularity(Integer.parseInt(item_ID));
                 title.setText(Item.getItem(Integer.parseInt(item_ID)).getTitle());
                 price.setText("$" + Item.getItem(Integer.parseInt(item_ID)).getPrice());
                 description.setText(Item.getItem(Integer.parseInt(item_ID)).getDescription());
