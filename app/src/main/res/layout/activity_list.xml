@@ -15,15 +15,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <ImageButton
+            <androidx.cardview.widget.CardView
                 android:id="@+id/list_home_button"
                 android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="4dp"
-                android:backgroundTint="#803BE0"
-                android:src="@drawable/ic_home_button"
-                android:scaleType="fitCenter"
-                />
+                android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
+                style="@style/CategoryCard">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_home_button"/>
+            </androidx.cardview.widget.CardView>
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

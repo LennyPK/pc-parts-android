@@ -1,6 +1,7 @@
 package com.example.project_2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,7 +29,7 @@ public class ListActivity extends AppCompatActivity {
         ItemList item_list;
         TextView title_text;
         SearchView search_view;
-        ImageButton home_button;
+        CardView home_button;
         String category_position;
         String search_term;
 

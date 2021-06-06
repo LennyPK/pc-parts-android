@@ -1,6 +1,7 @@
 package com.example.project_2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -23,7 +24,7 @@ public class ViewItemActivity extends AppCompatActivity {
         TextView price;
         TextView description;
         TextView category_description;
-        ImageButton home_button;
+        CardView home_button;
         String item_ID;
 
         ImageButton left_nav;
