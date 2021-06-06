@@ -27,6 +27,9 @@ public class ListActivity extends AppCompatActivity {
     int[] itemIDs;
 
     class ViewHolder {
+        //holds all the views for the activity
+
+        //current activity is useful for initializing things.
         Activity context;
         Category category;
 
@@ -40,10 +43,12 @@ public class ListActivity extends AppCompatActivity {
 
         public ViewHolder(Activity context) {
             this.context=context;
-            initializeItems();
+            initializeViews();
             setListeners();
             getIntents();
 
+
+            //logic for changing the title for the list activity
             String title = "There are no results";
             category = null;
             if(category_intent==null){
@@ -77,7 +82,8 @@ public class ListActivity extends AppCompatActivity {
             }
         }
 
-        public void initializeItems(){
+        public void initializeViews(){
+            //get all the views
             item_listview = findViewById(R.id.item_list_view);
             title_text = findViewById(R.id.list_title_text);
             search_view = findViewById(R.id.list_search_view);
@@ -85,6 +91,7 @@ public class ListActivity extends AppCompatActivity {
         }
 
         public void setListeners(){
+            //set all the listeners
             search_view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -94,9 +101,12 @@ public class ListActivity extends AppCompatActivity {
             search_view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
+                    //start a new list activity
                     Intent listActivity = new Intent(getBaseContext(), ListActivity.class);
+                    //send the search term to new activity
                     listActivity.putExtra("SEARCH_TERM", query);
                     if(category != null){
+                        //allows searches from within the list activity to carry forward the category filter
                         listActivity.putExtra("CATEGORY", Integer.toString(category.getID()));
                     }
                     startActivity(listActivity);
@@ -112,8 +122,10 @@ public class ListActivity extends AppCompatActivity {
             home_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //go to main activity
                     Intent mainActivity = new Intent(getBaseContext(), MainActivity.class);
                     startActivity(mainActivity);
+                    //slide animation
                     overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
                 }
             });
@@ -123,12 +135,14 @@ public class ListActivity extends AppCompatActivity {
                     Intent ViewActivity = new Intent(getBaseContext(), ViewItemActivity.class);
                     ViewActivity.putExtra("ITEM_ID", Integer.toString(itemIDs[position]));
                     startActivity(ViewActivity);
+                    //slide animation
                     overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                 }
             });
         }
 
         public void getIntents(){
+            //intent information
             category_intent = getIntent().getStringExtra("CATEGORY");
             search_intent = getIntent().getStringExtra("SEARCH_TERM");
         }
@@ -153,6 +167,7 @@ public class ListActivity extends AppCompatActivity {
     @Override
     public void finish() {
         super.finish();
+        //slide transition for back button
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 }

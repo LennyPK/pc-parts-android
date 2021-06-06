@@ -22,6 +22,9 @@ import com.example.project_2.model.Item;
 public class ViewItemActivity extends AppCompatActivity {
 
     class ViewHolder {
+        //holds all the views
+
+        //current activity is useful
         Activity context;
 
         TextView title;
@@ -42,14 +45,22 @@ public class ViewItemActivity extends AppCompatActivity {
             setListeners();
             getIntents();
 
+            //make sure intent information is given - this is to avoid errors on app startup
             if (item_ID != null) {
+                //increment popularity of item when it is visited
                 DataProvider.incPopularity(Integer.parseInt(item_ID));
+
+                //set item information
                 title.setText(Item.getItem(Integer.parseInt(item_ID)).getTitle());
                 price.setText("$" + Item.getItem(Integer.parseInt(item_ID)).getPrice());
                 description.setText(Item.getItem(Integer.parseInt(item_ID)).getDescription());
                 category_description.setText(Item.getItem(Integer.parseInt(item_ID)).getCategory().getDescription());
+
+                //connect view pager to adapter
                 imageAdapter = new ImageAdapter(context, Item.getItem(Integer.parseInt(item_ID)).getImageIDs());
                 viewPager.setAdapter(imageAdapter);
+
+                //add some padding between images
                 viewPager.setClipToPadding(false);
                 viewPager.setPageMargin(40);
                 viewPager.setPadding(16, 0, 16, 0);
@@ -57,6 +68,7 @@ public class ViewItemActivity extends AppCompatActivity {
         }
 
         public void initializeItems() {
+            //find all the views
             price = findViewById(R.id.view_item_price);
             description = findViewById(R.id.view_item_description);
             category_description = findViewById(R.id.view_item_category_description);
@@ -68,20 +80,23 @@ public class ViewItemActivity extends AppCompatActivity {
         }
 
         public void setListeners() {
+            //set all the listeners
+
+            //left image button
             left_nav.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     viewPager.arrowScroll(View.FOCUS_LEFT);
                 }
             });
-
+            //right image button
             right_nav.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     viewPager.arrowScroll(View.FOCUS_RIGHT);
                 }
             });
-
+            //listener needs to be here even though they are empty
             viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -99,14 +114,18 @@ public class ViewItemActivity extends AppCompatActivity {
             home_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //when home button is clicked go to mainActivity
                     Intent mainActivity = new Intent(getBaseContext(), MainActivity.class);
                     startActivity(mainActivity);
+                    //slide animation
                     overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 }
             });
         }
 
+        //get intent information
         public void getIntents(){
+            //item ID is supplied which makes things easy
             item_ID = getIntent().getStringExtra("ITEM_ID");
         }
     }
@@ -127,6 +146,7 @@ public class ViewItemActivity extends AppCompatActivity {
     @Override
     public void finish() {
         super.finish();
+        //slide animation when back button pressed
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

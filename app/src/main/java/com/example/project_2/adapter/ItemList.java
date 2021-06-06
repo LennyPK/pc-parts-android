@@ -12,6 +12,7 @@ import com.example.project_2.R;
 import com.example.project_2.model.Item;
 
 public class ItemList extends ArrayAdapter {
+    //adapter to supply list activity listview with items.
     private Activity context;
     private int[] IDList;
 
@@ -33,6 +34,7 @@ public class ItemList extends ArrayAdapter {
         TextView itemPrice = (TextView) item.findViewById(R.id.item_price);
         ImageView imageView = (ImageView) item.findViewById(R.id.item_imageview);
 
+        //gets Item info from list of items in Item class by using each items ID.
         itemTitle.setText(Item.getItem(IDList[position]).getTitle());
         itemPrice.setText("$" + String.format("%.2f", Item.getItem(IDList[position]).getPrice()));
         imageView.setImageResource(Item.getItem(IDList[position]).getImageIDs().get(0));

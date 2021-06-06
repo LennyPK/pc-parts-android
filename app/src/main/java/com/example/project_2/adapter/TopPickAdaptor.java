@@ -19,20 +19,24 @@ import com.example.project_2.model.Item;
 import java.util.List;
 
 public class TopPickAdaptor extends RecyclerView.Adapter<TopPickAdaptor.ViewHolder> {
+    //adapter for top picks recycler view.
 
     private onItemListener onItemListener;
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        //implements onclickListener so that we can click on items and switch to view item activity
 
         public TextView itemTitle;
         public TextView itemPrice;
         public ImageView imageView;
 
+        //instance of interface
         onItemListener onItemListener;
 
         public ViewHolder(View item, onItemListener onItemListener) {
             super(item);
             this.onItemListener=onItemListener;
+            //initialize views
             itemTitle = (TextView) item.findViewById(R.id.item_title);
             itemPrice = (TextView) item.findViewById(R.id.item_price);
             imageView = (ImageView) item.findViewById(R.id.item_imageview);
@@ -40,6 +44,7 @@ public class TopPickAdaptor extends RecyclerView.Adapter<TopPickAdaptor.ViewHold
             item.setOnClickListener(this);
         }
 
+        //onclick listener - calls interface method
         @Override
         public void onClick(View v) {
             onItemListener.onItemClick(getAdapterPosition());
@@ -50,6 +55,7 @@ public class TopPickAdaptor extends RecyclerView.Adapter<TopPickAdaptor.ViewHold
     private Context mContext;
 
     public TopPickAdaptor(List<Integer> topPicks, onItemListener onItemListener) {
+        //inputs list of item IDs which are in the order that it will display
         this.onItemListener=onItemListener;
         mItems = topPicks;
     }
@@ -89,6 +95,7 @@ public class TopPickAdaptor extends RecyclerView.Adapter<TopPickAdaptor.ViewHold
         return mItems.size();
     }
 
+    //interface so that onclick listener can be implemented
     public interface onItemListener{
         void onItemClick(int position);
     }

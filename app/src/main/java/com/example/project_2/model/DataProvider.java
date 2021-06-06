@@ -5,6 +5,8 @@ import com.example.project_2.R;
 import java.util.*;
 
 public class DataProvider {
+    //class used for retrieving data. Simulates a database.
+
     //Any categories created here will show up on the main screen
     public static Category CATEGORY_MOTHERBOARD = new Category("Motherboards", R.drawable.category_motherboard, "MB Socket:\nWi-Fi:\nChipset:\nForm Factor:\nMemory Type:");
     public static Category CATEGORY_RAM = new Category("RAM", R.drawable.category_ram, "Form Factor:\nMemory Type:\nMemory Capacity:\nMemory Speed:\nCAS Latency:\nVoltage:");
@@ -155,6 +157,7 @@ public class DataProvider {
 
 
     public static void initializeItems(){
+        //create and add all the items from the data above.
         for(int i = 0; i < name.length; i++){
             //this is the only time new Item should be called (it mucks things up otherwise)
             ArrayList<Integer> imageIDs = new ArrayList<Integer>();
@@ -165,6 +168,7 @@ public class DataProvider {
         }
     }
 
+    //return all the item IDs in a category
     public static int[] getCategory(int categoryID){
         List<Integer> ids = new ArrayList<Integer>();
         for(Item item : Item.items){
@@ -179,6 +183,7 @@ public class DataProvider {
         return list;
     }
 
+    //return the results of a search, category can be null and it searches all items or just within the supplied category, returns item IDs
     public static int[] searchResults(String search_term, Category search_category) {
         ArrayList<Item> products = new ArrayList<Item>();
         search_term = search_term.toLowerCase();
@@ -197,6 +202,7 @@ public class DataProvider {
         return list;
     }
 
+    //returns a list of item IDs sorted by popularity
     public static List<Integer> topPicks() {
         Integer[] idx = new Integer[name.length];
 
@@ -215,6 +221,7 @@ public class DataProvider {
         return list;
     }
 
+    //increases the popularity of an item.
     public static void incPopularity(int id){
         popularity[id]++;
     }

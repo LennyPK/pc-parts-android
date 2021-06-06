@@ -26,13 +26,18 @@ public class MainActivity extends ListActivity implements TopPickAdaptor.onItemL
 
     @Override
     public void onItemClick(int position) {
+        //onclick for top picks
         Intent ViewActivity = new Intent(getBaseContext(), ViewItemActivity.class);
         ViewActivity.putExtra("ITEM_ID", Integer.toString(DataProvider.topPicks().get(position)));
         startActivity(ViewActivity);
+        //slide animation
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }
 
     class ViewHolder {
+        //holds all the views for mainActivity
+
+        //current activity is useful
         Activity context;
 
         ListView category_listview;
@@ -47,8 +52,11 @@ public class MainActivity extends ListActivity implements TopPickAdaptor.onItemL
             initializeItems();
             setListeners();
 
+            //connect adapter to category listview
             category_list = new CategoryList(context);
             category_listview.setAdapter(category_list);
+
+            //this is used for listview to make sure that it scrolls properly
             setListViewHeightBasedOnChildren(category_listview);
         }
 
@@ -107,11 +115,16 @@ public class MainActivity extends ListActivity implements TopPickAdaptor.onItemL
 
         vh = new ViewHolder(this);
 
+
+        //set adapter for recycler view
         vh.top_picks_adapter = new TopPickAdaptor(DataProvider.topPicks(), this);
         vh.top_picks.setAdapter(vh.top_picks_adapter);
+
+        //set some padding between top picks
         vh.top_picks.setClipToPadding(false);
         vh.top_picks.setPadding(16, 0, 16, 0);
 
+        //snap top picks to grid
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(vh.top_picks);
         

@@ -12,6 +12,7 @@ import com.example.project_2.R;
 import com.example.project_2.model.Category;
 
 public class CategoryList extends ArrayAdapter{
+    //Adapter for main activity listview of categories
     private Activity context;
 
     public CategoryList(Activity context) {
@@ -29,6 +30,7 @@ public class CategoryList extends ArrayAdapter{
         TextView textViewName = (TextView) category.findViewById(R.id.category_textview);
         ImageView imageView = (ImageView) category.findViewById(R.id.category_imageview);
 
+        //gets category info from list of categories in Category class.
         textViewName.setText(Category.categories.get(position).getName());
         imageView.setImageResource(Category.categories.get(position).getImageID());
         return category;

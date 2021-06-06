@@ -14,8 +14,10 @@ import com.example.project_2.R;
 import java.util.ArrayList;
 
 public class ImageAdapter extends PagerAdapter {
+    //Adapter to populate viewpager in view item activity.
 
     private Context context;
+    //list of images to display, note it can be any length and not all items need to have the same number of images.
     private ArrayList<Integer> imageList;
 
     public ImageAdapter(Context context, ArrayList<Integer> imageList){
@@ -42,6 +44,7 @@ public class ImageAdapter extends PagerAdapter {
 
         imageView.setImageResource(imageList.get(position));
 
+        //Makes sure that there is no out of bounds exception
         container.addView(view, container.getChildCount() > position ? position : container.getChildCount());
 
         return view;
