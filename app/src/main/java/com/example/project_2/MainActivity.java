@@ -1,7 +1,9 @@
 package com.example.project_2;
 
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -109,6 +111,10 @@ public class MainActivity extends ListActivity implements TopPickAdaptor.onItemL
         vh.top_picks.setAdapter(vh.top_picks_adapter);
         vh.top_picks.setClipToPadding(false);
         vh.top_picks.setPadding(16, 0, 16, 0);
+
+        SnapHelper snapHelper = new LinearSnapHelper();
+        snapHelper.attachToRecyclerView(vh.top_picks);
+        
     }
 
     //this function is for resizing the listview so that it doesn't do weird scroll thing
