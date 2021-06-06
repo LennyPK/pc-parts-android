@@ -29,12 +29,15 @@ public class ItemList extends ArrayAdapter {
         View item =convertView;
         LayoutInflater inflater = context.getLayoutInflater();
         if(convertView==null)
+            //R.layout.item_card is the layout used for each item in the list
             item = inflater.inflate(R.layout.item_card,null,true);
+
+        //get all the views of the layout
         TextView itemTitle = (TextView) item.findViewById(R.id.item_title);
         TextView itemPrice = (TextView) item.findViewById(R.id.item_price);
         ImageView imageView = (ImageView) item.findViewById(R.id.item_imageview);
 
-        //gets Item info from list of items in Item class by using each items ID.
+        //gets Item info from list of items in Item class by using each items ID and puts the info into the views
         itemTitle.setText(Item.getItem(IDList[position]).getTitle());
         itemPrice.setText("$" + String.format("%.2f", Item.getItem(IDList[position]).getPrice()));
         imageView.setImageResource(Item.getItem(IDList[position]).getImageIDs().get(0));

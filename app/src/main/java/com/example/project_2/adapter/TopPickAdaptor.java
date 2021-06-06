@@ -65,7 +65,7 @@ public class TopPickAdaptor extends RecyclerView.Adapter<TopPickAdaptor.ViewHold
         mContext = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(mContext);
 
-        // Inflate the custom layout
+        //R.layout.item_card is the layout used for each item
         View itemView = inflater.inflate(R.layout.item_card, parent, false);
 
         // Return a new holder instance

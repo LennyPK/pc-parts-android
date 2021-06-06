@@ -38,8 +38,10 @@ public class ImageAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
+        //R.layout.image_view_pager_item is the layout used for each image
         View view = LayoutInflater.from(context).inflate(R.layout.image_view_pager_item, container, false);
 
+        //gets the imageview from the layout
         ImageView imageView = view.findViewById(R.id.view_item_imageview);
 
         imageView.setImageResource(imageList.get(position));

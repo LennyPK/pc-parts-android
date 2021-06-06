@@ -26,6 +26,7 @@ public class CategoryList extends ArrayAdapter{
         View category =convertView;
         LayoutInflater inflater = context.getLayoutInflater();
         if(convertView==null)
+            //R.layout.category_card is the layout used for each category
             category = inflater.inflate(R.layout.category_card,null,true);
         TextView textViewName = (TextView) category.findViewById(R.id.category_textview);
         ImageView imageView = (ImageView) category.findViewById(R.id.category_imageview);
