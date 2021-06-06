@@ -34,7 +34,7 @@ public class ItemList extends ArrayAdapter {
         ImageView imageView = (ImageView) item.findViewById(R.id.item_imageview);
 
         itemTitle.setText(Item.getItem(IDList[position]).getTitle());
-        itemPrice.setText("$" + Double.toString(Item.getItem(IDList[position]).getPrice()));
+        itemPrice.setText("$" + String.format("%.2f", Item.getItem(IDList[position]).getPrice()));
         imageView.setImageResource(Item.getItem(IDList[position]).getImageIDs().get(0));
         return item;
     }

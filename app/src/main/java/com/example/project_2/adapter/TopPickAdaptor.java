@@ -77,7 +77,7 @@ public class TopPickAdaptor extends RecyclerView.Adapter<TopPickAdaptor.ViewHold
         TextView itemTitle = holder.itemTitle;
         itemTitle.setText(item.getTitle());
         TextView itemPrice = holder.itemPrice;
-        itemPrice.setText("$" + Double.toString(item.getPrice()));
+        itemPrice.setText("$" + String.format("%.2f",item.getPrice()));
         ImageView imageView = holder.imageView;
         imageView.setImageResource(item.getImageIDs().get(0));
 
